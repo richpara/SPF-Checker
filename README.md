@@ -10,4 +10,4 @@ Start the client on a separate host with the domain and DNS record as arguments.
 
 node SPFclient.js "xyz.com TXT"
 
-Uses node version >= 15.9.0
+Requires nodejs version >= 15.9.0
