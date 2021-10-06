@@ -18,12 +18,13 @@ const server = net.createServer((c) => {
     c.on('data', (data) => {
 	mytarget = data.toString();
 
-	mytarget = mytarget.replace(/^\s+|\s+$/g, '');
+//	mytarget = mytarget.replace(/^\s+|\s+$/g, '');
+	mytarget = mytarget.replace(/\s+/g, '');
 
 
-	console.log(mytarget);
+	console.log('Got target=' + mytarget);
 	
-	exec('dig ' + mytarget + '  +authority', (error, stdout, stderr) => {
+	exec('dig ' + mytarget + ' TXT  +authority', (error, stdout, stderr) => {
 
 	    if (error) {
               console.error(`exec error: ${error}`);
@@ -31,7 +32,7 @@ const server = net.createServer((c) => {
            }
 
           c.write(`stdout: ${stdout}`);	    
-	  console.error(`stderr: ${stderr}`);
+//	  console.error(`stderr: ${stderr}`);
 
 	});
 
